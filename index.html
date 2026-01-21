@@ -10,6 +10,32 @@
 #popup, #header, #layerpanel {
   left: 36px;
 }
+/* Custom Legend Styles */
+#legend-container {
+    position: fixed;
+    top: 10px;          /* Distance from top */
+    left: 35px;         /* Distance from left */
+    z-index: 1001;      /* Ensures it stays above the map */
+    background: rgba(255, 255, 255, 0.5); /* White with 80% transparency */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    pointer-events: none; /* Allows you to click "through" the legend to the map */
+}
+
+#legend-container img {
+    display: block;
+    width: 400px;       /* Default width for desktop */
+    max-width: 35vw;    /* Responsive: image will never exceed 35% of screen width */
+    height: auto;       /* Maintains aspect ratio */
+}
+
+/* Mobile specific adjustment */
+@media (max-width: 600px) {
+    #legend-container img {
+        width: 200px;   /* Smaller fixed width for phones */
+    }
+}
 </style>
 <script src="./threejs/three.min.js"></script>
 <script src="./threejs/OrbitControls.js"></script>
@@ -18,6 +44,9 @@
 <script src="./threejs/loaders/GLTFLoader.js"></script>
 </head>
 <body>
+<div id="legend-container">
+    <img src="legend_x.png" alt="Map Legend">
+</div>
 <div id="view">
   <div id="northarrow"></div>
   <div id="navigation"></div>
@@ -126,10 +155,13 @@ app.init(container);       // initialize viewer
 app.loadSceneFile("./data/index/scene.json", function (scene) {
   // scene file has been loaded
   app.start();
+
+  // --- ADD THESE LINES TO LIMIT ROTATION ---
+  app.controls.maxPolarAngle = Math.PI / 2.5; // Prevents looking under the map (90 degrees)
+  app.controls.minPolarAngle = 0;           // Prevents flipping over the top
+  // ------------------------------------------
+
 }, function (scene) {
   // all relevant files have been loaded
-
 });
 </script>
-</body>
-</html>
