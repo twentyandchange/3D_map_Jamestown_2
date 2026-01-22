@@ -13,7 +13,7 @@
 /* Custom Legend Styles */
 #legend-container {
     position: fixed;
-    top: 10px;          /* Distance from top */
+    top: 30px;          /* Distance from top */
     left: 35px;         /* Distance from left */
     z-index: 1001;      /* Ensures it stays above the map */
     background: rgba(255, 255, 255, 0.5); /* White with 80% transparency */
@@ -162,7 +162,7 @@ app.loadSceneFile("./data/index/scene.json", function (scene) {
   app.start();
 
   // --- ADD THESE LINES TO LIMIT ROTATION ---
-  app.controls.maxPolarAngle = Math.PI / 2.5; // Prevents looking under the map (90 degrees)
+  app.controls.maxPolarAngle = Math.PI / 2.7; // Prevents looking under the map (90 degrees)
   app.controls.minPolarAngle = 0;           // Prevents flipping over the top
   // ------------------------------------------
 
