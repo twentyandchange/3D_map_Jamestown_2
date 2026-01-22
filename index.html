@@ -13,10 +13,10 @@
 /* Custom Legend Styles */
 #legend-container {
     position: fixed;
-    top: 70px;          /* Distance from top */
+    top: 80px;          /* Distance from top */
     left: 35px;         /* Distance from left */
     z-index: 1001;      /* Ensures it stays above the map */
-    background: rgba(255, 255, 255, 0.4); /* White with 80% transparency */
+    background: rgba(255, 255, 255, 0.6); /* White with 80% transparency */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -37,16 +37,19 @@
     }
 }
 </style>
+
 <script src="./threejs/three.min.js"></script>
 <script src="./threejs/OrbitControls.js"></script>
 <script src="./threejs/ViewHelper.js"></script>
 <script src="./Qgis2threejs.js"></script>
 <script src="./threejs/loaders/GLTFLoader.js"></script>
 </head>
+
+
 <body>
   <div id="title" style="position: absolute; top: 30px; left: 40px; z-index: 100; 
        color: #da251c; font-size: 28px; font-family: Sans-serif; font-style: bold;
-     	background-color: rgba(255, 255, 255, 0.4);
+     	background-color: rgba(255, 255, 255, 0.6);
      	padding: 10px 20px;
      	border-radius: 5px;">
     Proximity of Tobacco Retailers to Youth in Jamestown
@@ -59,40 +62,10 @@
   <div id="northarrow"></div>
   <div id="navigation"></div>
 </div>
-
-<!-- popup -->
-<div id="popup">
-  <div id="closebtn">&times;</div>
-  <div id="popupbar"></div>
-  <div id="popupbody">
-    <div id="popupcontent"></div>
-
-    <!-- query result -->
-    <div id="queryresult">
-      <table id="qr_coords_table">
-        <caption>Clicked coordinates <div id="zoomtopoint" class="action-zoom zoombtn"></div></caption>
-        <tr><td id="qr_coords"></td></tr>
-      </table>
-
-
-
-      <!-- camera actions and measure tool -->
-      <div id="orbitbtn" class="action-btn action-orbit">Orbit</div>
-      <div id="measurebtn" class="action-btn">Measure distance</div>
-    </div>
 </body>
-  </div>
-</div>
 
 <!-- progress bar -->
-<div id="progress"><div id="progressbar"></div></div>
-
-<!-- menu -->
-<div id="toolbtns">
-  <div id="layerbtn"></div>
-  <div id="animbtn" class="hidden"></div>
-  <div id="infobtn"></div>
-</div>
+<div id="progress"><div id="progressbar"></div>
 
 <!-- header and footer -->
 <div id="header"></div>
@@ -101,9 +74,7 @@
 <!-- animation -->
 <div id="narrativebox" class="ef1">
   <div id="narbody">
-
   </div>
-  <div id="nextbtn"></div>
 </div>
 
 <script>
